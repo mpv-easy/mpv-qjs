@@ -1,0 +1,46 @@
+{
+  "name": "mpv-qjs-default",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build": "esbuild ./src/*.(ts|tsx) --bundle --outdir=dist --charset=utf8 --format=iife",
+    "build-minify": "esbuild ./src/*.(ts|tsx)  --loader:.js=jsx --bundle --outdir=dist --charset=utf8 --minify",
+    "copy": "cp -r ./dist/*.js $MPV_SCRIPT_QJS_DIR",
+    "lint": "biome check --apply-unsafe  ./",
+    "format": "biome format --write  ./",
+    "dev": "chokidar \"./src/**/*.(ts|tsx|json)\" -c \"pnpm run build && pnpm run copy\" -t 3000  --initial",
+    "dev-minify": "chokidar \"./src/**/*.(ts|tsx|json)\" -c \"pnpm run build-minify && pnpm run copy\" -t 3000  --initial"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.23.3",
+    "@biomejs/biome": "^1.5.3",
+    "chokidar-cli": "^3.0.0"
+  },
+  "dependencies": {
+    "@mpv-easy/assdraw": "0.1.6-alpha.3",
+    "@mpv-easy/mpv-easy": "0.1.6-alpha.3",
+    "@mpv-easy/polyfill": "^0.1.5",
+    "@mpv-easy/tool": "0.1.6-alpha.3",
+    "@mpv-easy/ui": "0.1.6-alpha.3",
+    "@polkadot/x-textencoder": "^12.6.2",
+    "@types/react": "^18.2.55",
+    "esbuild": "^0.20.0",
+    "react": "^18.0.0",
+    "fontfaceobserver": "^2.3.0",
+    "react-dom": "^18.2.0",
+    "lodash-es": "^4.17.21",
+    "react-reconciler": "^0.29.0",
+    "react-redux": "^9.1.0",
+    "react-use": "^17.5.0",
+    "redux": "^5.0.1"
+  }
+}

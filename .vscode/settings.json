@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    ".env*": "makefile",
+    "string.h": "c",
+    "quickjs.h": "c",
+    "stdio.h": "c"
+  }
+}
